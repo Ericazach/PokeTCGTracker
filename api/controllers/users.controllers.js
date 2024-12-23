@@ -69,9 +69,9 @@ module.exports.edit = (req, res, next) => {
 
 module.exports.delete = (req, res, next) => {
     console.log(req.params.id, "delete");
-    // if (req.user.id !== req.params.id) {
-    //     return next(createError(403, "Forbidden"));
-    // }
+    if (req.user.id !== req.params.id) {
+        return next(createError(403, "Forbidden"));
+    }
 
     User.deleteOne({ _id: req.params.id })
         .then(() => res.status(204).send())
