@@ -52,8 +52,8 @@ const Details = () => {
           <Pokemon {...pokemon} ancho={"w-[550px]"} />
         </div>
         <div className="flex flex-col mt-20 gap-4">
-          <h1 className="uppercase text-4xl font-black text-gray-800 font-serif">
-            {pokemon.name}?
+          <h1 className="uppercase tracking-wider text-4xl font-black text-gray-800 font-serif">
+            {pokemon.name}
           </h1>
           <div className="grid grid-cols-2 gap-4 grid-flow-row">
             <Item name="Type" icon={`/assets/images/${pokemon.types?.[0]}.png`} />
@@ -63,9 +63,11 @@ const Details = () => {
             <Item name="HP" info={pokemon.hp} />
             <Item name="Set" info={pokemon.set?.name} />
             <Item name="Rarity" info={pokemon.rarity} />
-            <Item name="Stage" info={pokemon.stage} />
+            <Item name="Stage" info={pokemon.subtypes[0]} />
             <Item name="Attacks" info={pokemon.attacks?.map(atk => atk.name).join(", ")} styles={"col-span-2"} />
-            <p>Check the prices in <b><a href={pokemon.cardmarket.url}>here</a></b></p>
+            <Item name="Info" info={pokemon.flavorText} styles={"col-span-2"} />
+
+            <p className="ms-1 text-gray-600 text-lg font-black">Check the prices in <b className="text-gray-800"><a href={pokemon.cardmarket.url}>Card Market</a></b></p>
           </div>
         </div>
       </div>
